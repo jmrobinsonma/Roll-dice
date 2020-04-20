@@ -1,5 +1,6 @@
 import random
 import sys
+import click
 
 class RollDice:
 	def __init__(self, userNumDice=0, userSides=0, userRolls=0):
@@ -16,17 +17,17 @@ class RollDice:
 
 	def get_user_inputs(self):
 		print("---ROLL DICE---")
-		self.userNumDice = int(input("How many dice?\n-->"))
-		self.userSides = int(input("How many sides?\n-->"))
-		self.userRolls = int(input("How many rolls?\n-->"))
+		
+		self.userNumDice = click.prompt("How many dice?", type=click.IntRange(1,100))
+		self.userSides = click.prompt("How many sides?", type=click.IntRange(1,100))
+		self.userRolls = click.prompt("How many rolls?", type=click.IntRange(1,100))
+
 		self.user_inputs = (self.userNumDice, self.userSides, self.userRolls)
 		return self.user_inputs
 
 	def user_prompt(self):
 		valid_response = ('r','q')
-		self.userPrompt = input("\nPress 'r' to roll the dice 'q' to quit\n --> ")
-		while self.userPrompt not in valid_response:
-			self.userPrompt = input("\nPress \'r' to roll the dice\nPress \'q' to quit\n --> ")
+		self.userPrompt = click.prompt("\nShaking dice...", type=click.Choice(['r','q'], case_sensitive=False))
 		return self.userPrompt
 
 	def roll_dice(self, user_inputs):
@@ -44,16 +45,12 @@ class RollDice:
 
 	
 	def play_again(self):
-		valid_response = ('y','n')
-		keep_on_playing = input(f"\nGame over. Play again? 'y' or 'n': ")
-		if keep_on_playing not in valid_response:
-			keep_on_playing = input(f"\nGame over. Play again? 'y' or 'n': ")
+		keep_on_playing = click.prompt(f"\nPlay again?", type=click.Choice(['y','n'], case_sensitive=False))
+		if keep_on_playing == 'y':
+			self.playAgain = True
+			return self.playAgain
 		else:
-			if keep_on_playing == 'y':
-				self.playAgain = True
-				return self.playAgain
-			else:
-				return self.playAgain
+			return self.playAgain
 			
 	def quit_game(self):
 		return print("Thanks for Playing!")
