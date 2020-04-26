@@ -32,4 +32,3 @@ while rolls < userRolls:
 	else:
 		userPrompt = input("\nPress \'r' to roll the dice\nPress \'q' to quit\n -->")
 
-	
