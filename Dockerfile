@@ -1,5 +1,5 @@
 FROM jmrobinson/diceappv2
-RUN mkdir /dice
+RUN rm /dice/
 VOLUME /dice
 WORKDIR /dice
 COPY . /dice
