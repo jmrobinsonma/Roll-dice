@@ -1,4 +1,4 @@
-FROM python:3.8-slim-buster
+FROM jmrobinson/diceappv2
 RUN mkdir /dice
 VOLUME /dice
 WORKDIR /dice
