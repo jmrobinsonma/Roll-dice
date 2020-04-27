@@ -1,6 +1,4 @@
 FROM jmrobinson/diceappv2
-RUN sleep 10
-RUN rm -rf /dice
 RUN mkdir /dice
 VOLUME /dice
 WORKDIR /dice
