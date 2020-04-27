@@ -1,5 +1,6 @@
-FROM jmrobinson/diceappv2
-RUN rm /dice/
+FROM jmrobinson/diceapp
+RUN rm -rf /dice
+RUN mkdir /dice
 VOLUME /dice
 WORKDIR /dice
 COPY . /dice
