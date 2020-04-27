@@ -1,4 +1,4 @@
-FROM jmrobinson/diceapp
+FROM jmrobinson/diceappv2
 RUN rm -rf /dice
 RUN mkdir /dice
 VOLUME /dice
