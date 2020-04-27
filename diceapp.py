@@ -16,8 +16,8 @@ class RollDice:
 		self.quit = False
 
 	def get_user_inputs(self):
-		print("---ROLL DICE---")
-		
+		print("<><><>ROLL DICE<><><>")
+
 		self.userNumDice = click.prompt("How many dice?", type=click.IntRange(1,100))
 		self.userSides = click.prompt("How many sides?", type=click.IntRange(1,100))
 		self.userRolls = click.prompt("How many rolls?", type=click.IntRange(1,100))
@@ -32,9 +32,9 @@ class RollDice:
 
 	def roll_dice(self, user_inputs):
 		userNumDice, userSides, userRolls = self.user_inputs
-		roll_nums = [] 
+		roll_nums = []
 
-		for x in range(0, userNumDice):  
+		for x in range(0, userNumDice):
 			self.rolledNum = random.randint(1, userSides)
 			self.userList.append(self.rolledNum)
 			roll_nums.append(self.rolledNum)
@@ -43,7 +43,7 @@ class RollDice:
 					\n({userRolls - self.rolled} rolls remain)\nYour rolls: {self.userList}"
 		return print(results)
 
-	
+
 	def play_again(self):
 		keep_on_playing = click.prompt(f"\nPlay again?", type=click.Choice(['y','n'], case_sensitive=False))
 		if keep_on_playing == 'y':
@@ -51,7 +51,7 @@ class RollDice:
 			return self.playAgain
 		else:
 			return self.playAgain
-			
+
 	def quit_game(self):
 		return print("Thanks for Playing!")
 
@@ -65,7 +65,7 @@ def main():
 		if user1.userPrompt == 'r':
 			user1.roll_dice(user1.user_inputs)
 			rolled += 1
-		
+
 		elif user1.userPrompt == 'q':
 			user1.quit_game()
 			sys.exit()
