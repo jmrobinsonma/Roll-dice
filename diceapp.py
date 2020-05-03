@@ -25,7 +25,7 @@ class RollDice:
 		self.user_inputs = (self.user_num_dice, self.user_sides, self.user_rolls)
 		return self.user_inputs
 
-	def user_prompt(self):
+	def prompt_user(self):
 		valid_response = ('r','q')
 		self.user_prompt = click.prompt("\nShaking dice...", type=click.Choice(['r','q'], case_sensitive=False))
 		return self.user_prompt
@@ -44,7 +44,7 @@ class RollDice:
 		return print(results)
 
 
-	def play_again(self):
+	def play_again_prompt(self):
 		keep_on_playing = click.prompt(f"\nPlay again?", type=click.Choice(['y','n'], case_sensitive=False))
 		if keep_on_playing == 'y':
 			self.play_again = True
@@ -61,18 +61,14 @@ def main():
 	user1 = RollDice()
 	user1.get_user_inputs()
 	while rolled < user1.user_rolls:
-		user1.user_prompt()
+		user1.prompt_user()
 		if user1.user_prompt == 'r':
 			user1.roll_dice(user1.user_inputs)
 			rolled += 1
-
 		elif user1.user_prompt == 'q':
 			user1.quit_game()
-			try:
-				sys.exit()
-			except SystemExit:
-				pass
-	user1.play_again()
+			sys.exit()
+	user1.play_again_prompt()
 	if user1.play_again:
 		main()
 	else:

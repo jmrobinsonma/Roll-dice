@@ -1,4 +1,4 @@
-FROM jmrobinson/diceappv2:latest
+FROM python:3.8-slim-buster 
 WORKDIR /dice
 COPY . /dice
 RUN pip3 install -r requirements.txt
